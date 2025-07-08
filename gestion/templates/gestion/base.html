@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gestión de Torneos{% endblock %}</title>
+</head>
+<body>
+    <h1>🎾 Gestión de Torneos de Tenis</h1>
+    <nav>
+        <a href="{% url 'jugador_lista' %}">📋 Ver jugadores</a> |
+        <a href="{% url 'jugador_nuevo' %}">➕ Cargar jugador</a> |
+        <a href="{% url 'buscar_jugador' %}">🔍 Buscar jugador</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
+
+| <a href="{% url 'torneo_nuevo' %}">➕ Cargar torneo</a>
+| <a href="{% url 'partido_nuevo' %}">➕ Cargar partido</a>
+
+| <a href="{% url 'torneo_lista' %}">📋 Ver torneos</a>
+| <a href="{% url 'partido_lista' %}">📋 Ver partidos</a>

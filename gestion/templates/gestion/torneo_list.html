@@ -1,0 +1,14 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Torneos{% endblock %}
+
+{% block content %}
+<h2>📅 Torneos registrados</h2>
+<ul>
+    {% for torneo in torneos %}
+        <li>{{ torneo.nombre }} – {{ torneo.sede }} – {{ torneo.fecha_inicio }}</li>
+    {% empty %}
+        <li>No hay torneos cargados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

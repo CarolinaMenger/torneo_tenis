@@ -1,0 +1,14 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Partidos{% endblock %}
+
+{% block content %}
+<h2>🎾 Partidos registrados</h2>
+<ul>
+    {% for partido in partidos %}
+        <li>{{ partido.fecha }} – {{ partido.jugador1 }} vs {{ partido.jugador2 }} – {{ partido.torneo }} – Resultado: {{ partido.resultado }}</li>
+    {% empty %}
+        <li>No hay partidos registrados todavía.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

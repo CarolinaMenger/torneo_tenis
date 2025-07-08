@@ -1,0 +1,14 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Lista de Jugadores{% endblock %}
+
+{% block content %}
+<h2>📋 Lista de jugadores</h2>
+<ul>
+    {% for jugador in jugadores %}
+        <li>{{ jugador.nombre }} – Edad: {{ jugador.edad }} – Ranking: {{ jugador.ranking }}</li>
+    {% empty %}
+        <li>No hay jugadores cargados aún.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
