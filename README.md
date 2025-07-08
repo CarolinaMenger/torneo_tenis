@@ -1,0 +1,46 @@
+# 🎾 Proyecto Django – Gestión de Torneos de Tenis
+
+Este proyecto es una aplicación web construida con Django siguiendo el patrón **MVT** (Modelo–Vista–Template). Permite registrar, buscar y listar jugadores, torneos y partidos de tenis.
+
+---
+
+## 🚀 Funcionalidades principales
+
+- Alta de jugadores, torneos y partidos mediante formularios.
+- Búsqueda de jugadores por nombre (filtro simple por `icontains`).
+- Listado de jugadores, torneos y partidos registrados.
+- Navegación basada en herencia de templates (`base.html`).
+- Panel de administración para gestionar todos los modelos.
+
+---
+
+## 🧱 Modelos utilizados
+
+- `Jugador`: nombre, nacionalidad, ranking, fecha de nacimiento.
+- `Torneo`: nombre, sede, fecha de inicio.
+- `Partido`: jugador1, jugador2, torneo, fecha y resultado.
+
+---
+
+## 🧪 Orden sugerido para probar el sistema
+
+1. Ingresar a [http://127.0.0.1:8000/jugadores/nuevo/](http://127.0.0.1:8000/jugadores/nuevo/) para cargar un jugador.
+2. Registrar torneos en [http://127.0.0.1:8000/torneos/nuevo/](http://127.0.0.1:8000/torneos/nuevo/)
+3. Cargar partidos: [http://127.0.0.1:8000/partidos/nuevo/](http://127.0.0.1:8000/partidos/nuevo/)
+4. Consultar:
+   - Jugadores: `/jugadores/`
+   - Torneos: `/torneos/`
+   - Partidos: `/partidos/`
+5. Buscar jugador por nombre: `/jugadores/buscar/`
+6. Acceder al panel de admin: `/admin/` (tras crear superusuario)
+
+---
+
+## ⚙️ ¿Cómo correr el proyecto localmente?
+
+1. Clonar o descargar el repositorio
+2. Crear y activar un entorno virtual:
+
+```bash
+python -m venv env
+.\env\Scripts\activate  # En Windows
