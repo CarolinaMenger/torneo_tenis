@@ -1,4 +1,4 @@
-# 🎾 Proyecto Django – Gestión de Torneos de Tenis
+#  Proyecto Django – Gestión de Torneos de Tenis
 
 Este proyecto es una aplicación web construida con Django siguiendo el patrón **MVT** (Modelo–Vista–Template). Permite registrar, buscar y listar jugadores, torneos y partidos de tenis.
 
@@ -44,3 +44,26 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 ```bash
 python -m venv env
 .\env\Scripts\activate  # En Windows
+
+3. Instalar Django:
+
+```bash
+pip install django
+
+4. Aplicar migraciones:
+
+python manage.py makemigrations
+python manage.py migrate
+
+5. Crear superusuario (opcional)
+
+python manage.py createsuperuser
+
+6. Ejecutar el servidor:
+
+python manage.py runserver
+
+7. Acceder desde el navegador:
+
+http://127.0.0.1:8000/
+
