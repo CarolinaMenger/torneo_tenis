@@ -4,25 +4,25 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 
 ---
 
-## 🚀 Funcionalidades principales
+## Funcionalidades principales
 
 - Alta de jugadores, torneos y partidos mediante formularios.
-- Búsqueda de jugadores por nombre (filtro simple por `icontains`).
+- Búsqueda de jugadores por nombre.
 - Listado de jugadores, torneos y partidos registrados.
-- Navegación basada en herencia de templates (`base.html`).
+- Navegación basada en herencia de templates (base.html).
 - Panel de administración para gestionar todos los modelos.
 
 ---
 
-## 🧱 Modelos utilizados
+## Modelos utilizados
 
-- `Jugador`: nombre, nacionalidad, ranking, fecha de nacimiento.
+- `Jugador`: nombre, edad y ranking.
 - `Torneo`: nombre, sede, fecha de inicio.
-- `Partido`: jugador1, jugador2, torneo, fecha y resultado.
+- `Partido`: jugador1, jugador2, torneo, resultado y fecha.
 
 ---
 
-## 🧪 Orden sugerido para probar el sistema
+## Orden sugerido para probar el sistema
 
 1. Ingresar a [http://127.0.0.1:8000/jugadores/nuevo/](http://127.0.0.1:8000/jugadores/nuevo/) para cargar un jugador.
 2. Registrar torneos en [http://127.0.0.1:8000/torneos/nuevo/](http://127.0.0.1:8000/torneos/nuevo/)
@@ -36,7 +36,7 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 
 ---
 
-## ⚙️ ¿Cómo correr el proyecto localmente?
+## ¿Cómo correr el proyecto localmente?
 
 1. Clonar o descargar el repositorio
 2. Crear y activar un entorno virtual:
