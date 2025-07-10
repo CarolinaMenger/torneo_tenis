@@ -41,13 +41,11 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 1. Clonar o descargar el repositorio
 2. Crear y activar un entorno virtual:
 
-```bash
 python -m venv env
 .\env\Scripts\activate  # En Windows
 
 3. Instalar Django:
 
-```bash
 pip install django
 
 4. Aplicar migraciones:
@@ -67,7 +65,7 @@ python manage.py runserver
 
 http://127.0.0.1:8000/
 
-## Estructura del proyecto
+## 📁 Estructura del proyecto
 
 TORNEO_TENIS/
 ├── .venv/
