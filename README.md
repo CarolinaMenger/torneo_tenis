@@ -1,10 +1,10 @@
-#  Proyecto Python – Gestión de Torneos de Tenis
+#  - 📌 Proyecto Python – Gestión de Torneos de Tenis
 
 Este proyecto es una aplicación web construida con Django siguiendo el patrón **MVT** (Modelo–Vista–Template). Permite registrar, buscar y listar jugadores, torneos y partidos de tenis.
 
 ---
 
-## Funcionalidades principales
+## - 🧩 Funcionalidades principales
 
 - Alta de jugadores, torneos y partidos mediante formularios.
 - Búsqueda de jugadores por nombre.
@@ -14,7 +14,7 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 
 ---
 
-## Modelos utilizados
+## 🎾 Modelos utilizados
 
 - `Jugador`: nombre, edad y ranking.
 - `Torneo`: nombre, sede, fecha de inicio.
@@ -22,7 +22,7 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 
 ---
 
-## Orden sugerido para probar el sistema
+## - 🛠️ Orden sugerido para probar el sistema
 
 1. Ingresar a [http://127.0.0.1:8000/jugadores/nuevo/](http://127.0.0.1:8000/jugadores/nuevo/) para cargar un jugador.
 2. Registrar torneos en [http://127.0.0.1:8000/torneos/nuevo/](http://127.0.0.1:8000/torneos/nuevo/)
@@ -36,7 +36,7 @@ Este proyecto es una aplicación web construida con Django siguiendo el patrón 
 
 ---
 
-## ¿Cómo correr el proyecto localmente?
+## - ⚙️ ¿Cómo correr el proyecto localmente?
 
 1. Clonar o descargar el repositorio
 2. Crear y activar un entorno virtual:
