@@ -67,37 +67,28 @@ http://127.0.0.1:8000/
 
 ## 📁 Estructura del proyecto
 
-TORNEO_TENIS/
-├── .venv/
-├── env/
-├── gestion/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   ├── views.py
-│   ├── migrations/
-│   └── templates/
-│       └── gestion/
-│           ├── base.html
-│           ├── buscar_jugador.html
-│           ├── jugador_form.html
-│           ├── jugador_list.html
-│           ├── partido_form.html
-│           ├── partido_list.html
-│           ├── torneo_form.html
-│           └── torneo_list.html
-│
-├── torneo_tenis/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── db.sqlite3
-├── manage.py
-└── .gitattributes
+TORNEO_TENIS
+   gestion
+      templates
+         base.html
+         buscar_jugador.html
+         jugador_form.html
+         jugador_list.html
+         partido_form.html
+         ppartido_list.html
+         torneo_form.html
+         torneo_list.html
+      admin.py
+      apps.py
+      forms.py
+      models.py
+      urls.py
+      views.py
+   torneo_tenis
+      asgi.py
+      settings.py
+      urls.py
+      wsgi.py
+      manage.py
+      
+
