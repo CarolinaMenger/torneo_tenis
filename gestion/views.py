@@ -3,6 +3,9 @@ from django.shortcuts import render
 from .models import Jugador, Torneo, Partido
 from .forms import JugadorForm, TorneoForm, PartidoForm, BusquedaJugadorForm
 
+def inicio(request):
+    return render(request, 'inicio.html')
+
 class JugadorCreate(CreateView):
     model = Jugador
     form_class = JugadorForm

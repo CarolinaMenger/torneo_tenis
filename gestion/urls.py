@@ -1,11 +1,14 @@
 from django.urls import path
 from .views import (
+    inicio,
     JugadorCreate, JugadorList, buscar_jugadores,
     TorneoCreate, TorneoList,
     PartidoCreate, PartidoList,
 )
 
 urlpatterns = [
+    path('', inicio, name='inicio'),
+    
     path('jugadores/nuevo/', JugadorCreate.as_view(), name='jugador_nuevo'),
     path('jugadores/', JugadorList.as_view(), name='jugador_lista'),
     path('jugadores/buscar/', buscar_jugadores, name='buscar_jugador'),
