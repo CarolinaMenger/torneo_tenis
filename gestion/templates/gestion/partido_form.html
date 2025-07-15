@@ -3,10 +3,24 @@
 {% block title %}Nuevo Partido{% endblock %}
 
 {% block content %}
-<h2>🎾 Registrar partido</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar partido</button>
-</form>
+<div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-dark text-white">
+        <h4 class="mb-0">🎾 Registrar partido</h4>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-warning">Guardar partido</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

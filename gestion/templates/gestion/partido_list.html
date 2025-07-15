@@ -3,12 +3,32 @@
 {% block title %}Lista de Partidos{% endblock %}
 
 {% block content %}
-<h2>🎾 Partidos registrados</h2>
-<ul>
-    {% for partido in partidos %}
-        <li>{{ partido.fecha }} – {{ partido.jugador1 }} vs {{ partido.jugador2 }} – {{ partido.torneo }} – Resultado: {{ partido.resultado }}</li>
-    {% empty %}
-        <li>No hay partidos registrados todavía.</li>
-    {% endfor %}
-</ul>
+<h2 class="text-center mb-4">🎾 Partidos registrados</h2>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Fecha</th>
+            <th>Jugador 1</th>
+            <th>Jugador 2</th>
+            <th>Torneo</th>
+            <th>Resultado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for partido in partidos %}
+        <tr>
+            <td>{{ partido.fecha }}</td>
+            <td>{{ partido.jugador1 }}</td>
+            <td>{{ partido.jugador2 }}</td>
+            <td>{{ partido.torneo }}</td>
+            <td>{{ partido.resultado }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center text-muted">No hay partidos registrados todavía.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

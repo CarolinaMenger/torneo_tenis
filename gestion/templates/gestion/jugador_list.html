@@ -3,12 +3,28 @@
 {% block title %}Lista de Jugadores{% endblock %}
 
 {% block content %}
-<h2>📋 Lista de jugadores</h2>
-<ul>
-    {% for jugador in jugadores %}
-        <li>{{ jugador.nombre }} – Edad: {{ jugador.edad }} – Ranking: {{ jugador.ranking }}</li>
-    {% empty %}
-        <li>No hay jugadores cargados aún.</li>
-    {% endfor %}
-</ul>
+<h2 class="text-center mb-4">📋 Lista de jugadores</h2>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Ranking</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for jugador in jugadores %}
+        <tr>
+            <td>{{ jugador.nombre }}</td>
+            <td>{{ jugador.edad }}</td>
+            <td>{{ jugador.ranking }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center text-muted">No hay jugadores cargados aún.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
