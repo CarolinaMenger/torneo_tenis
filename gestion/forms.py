@@ -2,9 +2,14 @@ from django import forms
 from .models import Jugador, Torneo, Partido
 
 class JugadorForm(forms.ModelForm):
+    fecha_nacimiento = forms.DateField(
+        input_formats=["%d/%m/%Y"],
+        widget=forms.DateInput(format="%d/%m/%Y", attrs={'placeholder': 'DD/MM/AAAA'})
+    )
+
     class Meta:
         model = Jugador
-        fields = '__all__'
+        fields = ['nombre', 'apellido', 'fecha_nacimiento', 'ranking']
 
 class TorneoForm(forms.ModelForm):
     class Meta:

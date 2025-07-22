@@ -1,14 +1,22 @@
 # gestion/models.py
 
 from django.db import models
+from datetime import date
 
 class Jugador(models.Model):
     nombre = models.CharField(max_length=100)
-    edad = models.PositiveIntegerField()
-    ranking = models.PositiveIntegerField()
+    apellido = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    ranking = models.IntegerField()
+
+    def edad(self):
+        hoy = date.today()
+        return hoy.year - self.fecha_nacimiento.year - (
+            (hoy.month, hoy.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day)
+        )
 
     def __str__(self):
-        return f"{self.nombre} (Ranking {self.ranking})"
+        return f"{self.nombre} {self.apellido}"
 
 class Torneo(models.Model):
     nombre = models.CharField(max_length=100)
