@@ -4,10 +4,13 @@ from .views import (
     JugadorCreate, JugadorList, buscar_jugadores,
     TorneoCreate, TorneoList,
     PartidoCreate, PartidoList,
+    about_view,
 )
 
 urlpatterns = [
     path('', inicio, name='inicio'),
+    path('about/', about_view, name='about'),
+
     
     path('jugadores/nuevo/', JugadorCreate.as_view(), name='jugador_nuevo'),
     path('jugadores/', JugadorList.as_view(), name='jugador_lista'),

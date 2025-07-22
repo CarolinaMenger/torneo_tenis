@@ -46,3 +46,6 @@ class PartidoList(ListView):
     model = Partido
     template_name = 'gestion/partido_list.html'
     context_object_name = 'partidos'
+
+def about_view(request):
+    return render(request, 'gestion/about.html')

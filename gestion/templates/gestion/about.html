@@ -1,0 +1,40 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h1 class="card-title">Acerca de mí</h1>
+      
+      <p class="card-text">
+        ¡Hola! Bienvenidos a mi app 🎾 Mi nombre es Carolina, aunque quienes me conocen me dicen <strong>Caro</strong> o <strong>Puppe</strong>.
+      </p>
+
+      <p class="card-text">
+        Este proyecto nació como parte de una materia de Python, y sinceramente me entusiasma mucho hacerlo. Estoy combinando dos cosas que me encantan: aprender cosas nuevas y el tenis, un deporte que practico en mi tiempo libre.
+      </p>
+
+      <p class="card-text">
+        Espero que disfruten explorando esta aplicación tanto como yo disfruté construirla, paso a paso, entrega tras entrega. Gracias por visitar 💙
+      </p>
+
+      <div class="text-center mt-4">
+  <img src="{% static 'images/fotoCaro.jpg' %}" alt="Foto de Carolina" class="img-fluid rounded shadow" style="max-width: 350px;">
+  <p class="text-muted mt-2">Así soy yo, disfrutando cada desafío 💻🎾</p>
+</div>
+
+      <hr>
+
+      <h5 class="card-subtitle mb-2 text-muted">🛠 Hecho con cariño y código</h5>
+      <ul>
+        <li><strong>Tecnologías:</strong> Python, Django, Bootstrap, HTML</li>
+        <li><strong>Propósito:</strong> Proyecto final para la materia de programación en el marco de mi formación en Data Science</li>
+        <li><strong>Enfoque:</strong> Gestión de torneos de tenis de forma intuitiva y funcional</li>
+      </ul>
+
+      <p class="text-center mt-4 fst-italic">"Cada línea de código fue un mini partido ganado." — Puppe</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
