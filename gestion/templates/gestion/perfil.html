@@ -1,0 +1,25 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Mi Perfil{% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-header bg-info text-white text-center">
+    <h5 class="mb-0">👤 Mi perfil</h5>
+  </div>
+  <div class="card-body text-center">
+    {% if usuario.perfil.foto %}
+      <img src="{{ usuario.perfil.foto.url }}" class="rounded-circle mb-3" width="120" height="120" alt="Foto de perfil">
+    {% endif %}
+
+    <p><strong>Nombre:</strong> {{ usuario.first_name }}</p>
+    <p><strong>Apellido:</strong> {{ usuario.last_name }}</p>
+    <p><strong>Usuario:</strong> {{ usuario.username }}</p>
+    <p><strong>Correo electrónico:</strong> {{ usuario.email }}</p>
+
+    <a href="{% url 'subir_foto' %}" class="btn btn-secondary w-100 mt-3">📸 Cambiar foto</a>
+    <a href="{% url 'editar_perfil' %}" class="btn btn-warning w-100 mt-2">✏️ Editar perfil</a>
+    <a href="{% url 'cambiar_password' %}" class="btn btn-danger w-100 mt-2">🔐 Cambiar contraseña</a>
+    <a href="{% url 'inicio' %}" class="btn btn-outline-primary w-100 mt-2">🏠 Volver al inicio</a>
+  </div>
+</div>
+{% endblock %}

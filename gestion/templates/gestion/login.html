@@ -1,11 +1,11 @@
 {% extends 'gestion/base.html' %}
 
-{% block title %}Nuevo Torneo{% endblock %}
+{% block title %}Ingresar al sistema{% endblock %}
 
 {% block content %}
 <div class="card mx-auto" style="max-width: 600px;">
   <div class="card-header bg-secondary text-white">
-    <h4 class="mb-0">📌 Crear nuevo torneo</h4>
+    <h4 class="mb-0">🔐 Iniciar sesión</h4>
   </div>
   <div class="card-body">
     <form method="post">
@@ -19,7 +19,6 @@
         </div>
       {% endif %}
 
-      <!-- Campos del formulario -->
       {% for field in form %}
         <div class="mb-3">
           <label class="form-label">{{ field.label }}</label>
@@ -27,14 +26,10 @@
           {% if field.errors %}
             <div class="text-danger">{{ field.errors }}</div>
           {% endif %}
-
-          {% if field.label == "Fecha de inicio" or field.label == "Fecha de finalización" %}
-            <small class="form-text text-muted">Formato: DD/MM/AAAA</small>
-          {% endif %}
         </div>
       {% endfor %}
 
-      <button type="submit" class="btn btn-primary">Guardar torneo</button>
+      <button type="submit" class="btn btn-primary">Ingresar</button>
     </form>
   </div>
 </div>

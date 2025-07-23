@@ -1,0 +1,14 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Bienvenida{% endblock %}
+
+{% block content %}
+<div class="text-center mt-4">
+ <h2 class="text-primary">
+  👋 Bienvenido{% if user.first_name %}/a{% endif %} al sistema,
+  {{ user.first_name|default:user.username }}!
+</h2>
+  <p class="fs-5 text-muted mt-3">Ya podés gestionar torneos, jugadores y resultados desde el menú superior.</p>
+  <a href="{% url 'inicio' %}" class="btn btn-outline-primary mt-4">🏠 Ir al inicio</a>
+</div>
+{% endblock %}

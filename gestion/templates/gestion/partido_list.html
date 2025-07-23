@@ -6,29 +6,43 @@
 <h2 class="text-center mb-4">🎾 Partidos registrados</h2>
 
 <table class="table table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>Fecha</th>
-            <th>Jugador 1</th>
-            <th>Jugador 2</th>
-            <th>Torneo</th>
-            <th>Resultado</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for partido in partidos %}
-        <tr>
-            <td>{{ partido.fecha }}</td>
-            <td>{{ partido.jugador1 }}</td>
-            <td>{{ partido.jugador2 }}</td>
-            <td>{{ partido.torneo }}</td>
-            <td>{{ partido.resultado }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="5" class="text-center text-muted">No hay partidos registrados todavía.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+  <thead class="table-dark">
+    <tr>
+      <th>Fecha</th>
+      <th>Modalidad</th>
+      <th>Jugadores</th>
+      <th>Torneo</th>
+      <th>Resultado</th>
+      <th>Ganador</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for partido in partidos %}
+    <tr>
+      <td>{{ partido.fecha }}</td>
+      <td>{{ partido.modalidad }}</td>
+      <td>
+        {% if partido.modalidad == "DOBLES" %}
+          {{ partido.jugador1 }} y {{ partido.jugador3 }} vs {{ partido.jugador2 }} y {{ partido.jugador4 }}
+        {% else %}
+          {{ partido.jugador1 }} vs {{ partido.jugador2 }}
+        {% endif %}
+      </td>
+      <td>{{ partido.torneo }}</td>
+      <td>{{ partido.resultado }}</td>
+      <td>
+        {% if partido.ganador %}
+          🏆 {{ partido.ganador }}
+        {% else %}
+          <span class="text-muted">Sin definir</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6" class="text-center text-muted">No hay partidos registrados todavía.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 {% endblock %}

@@ -1,43 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Gestión de Torneos{% endblock %}</title>
+  <meta charset="UTF-8">
+  <title>{% block title %}Gestión de Torneos{% endblock %}</title>
 
-    <!-- 🎨 Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 🎨 Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .navbar-nav .nav-item {
+      margin-right: 10px;
+    }
+
+    .nav-link {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    @media (max-width: 992px) {
+      .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- 🟦 Encabezado -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'inicio' %}">🎾 Torneos de Tenis</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    <!-- 📂 Navegación -->
-                    <li class="nav-item"><a class="nav-link" href="{% url 'jugador_lista' %}">📋 Ver jugadores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'jugador_nuevo' %}">➕ Cargar jugador</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'buscar_jugador' %}">🔍 Buscar jugador</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'torneo_nuevo' %}">➕ Cargar torneo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'partido_nuevo' %}">➕ Cargar partido</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'torneo_lista' %}">📋 Ver torneos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'partido_lista' %}">📋 Ver partidos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ℹ️ Acerca de mí</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 🧱 Contenido de cada vista -->
-    <div class="container mt-4">
-        {% block content %}
-        {% endblock %}
+  <body>
+  {% if user.is_authenticated and user.perfil.foto %}
+    <div class="position-absolute top-0 end-0 p-3">
+      <a href="{% url 'perfil' %}">
+        <img src="{{ user.perfil.foto.url }}" class="rounded-circle shadow" width="38" height="38" alt="Avatar">
+      </a>
     </div>
+  {% endif %}
 
-    <!-- 🔧 Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- 🏷️ Título principal -->
+  <div class="bg-light text-center py-3 border-bottom">
+    <h1 class="display-5 text-primary mb-0">🎾 Torneos de Tenis</h1>
+    <p class="text-muted fs-6">Gestión y resultados en un solo lugar</p>
+  </div>
+
+  <!-- 🟦 Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+        <!-- 📂 Navegación principal -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="{% url 'jugador_lista' %}">📋 Ver jugadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'jugador_nuevo' %}">➕ Cargar jugador</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'buscar_jugador' %}">🔍 Buscar jugador</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'torneo_nuevo' %}">➕ Cargar torneo</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'partido_nuevo' %}">➕ Cargar partido</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'torneo_lista' %}">📋 Ver torneos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'partido_lista' %}">📋 Ver partidos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ℹ️ Acerca de mí</a></li>
+        </ul>
+
+        <!-- 👤 Navegación por sesión -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+            <!-- 👋 Saludo -->
+            <li class="nav-item">
+              <span class="nav-link">👋 Hola, {{ user.first_name|default:user.username }}</span>
+            </li>
+
+            <!-- 👤 Mi Perfil -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'perfil' %}">👤 Mi Perfil</a>
+            </li>
+
+            <!-- 🔓 Cerrar sesión (via POST) -->
+            <li class="nav-item">
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="nav-link btn btn-link text-white p-0" style="text-decoration: none;">
+                  🔓 Cerrar sesión
+                </button>
+              </form>
+            </li>
+          {% else %}
+            <!-- 🔐 Ingreso -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">🔐 Ingresar</a>
+            </li>
+
+            <!-- 📋 Registro -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'registro' %}">📋 Registrarme</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ Mensajes Django -->
+  <div class="container mt-3">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- 🧱 Contenido de cada vista -->
+  <div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- ⚽️ Pie de página -->
+  <footer class="bg-light text-center py-3 border-top mt-5">
+    <small class="text-muted">Hecho con 🩵 por Caro — {% now "Y" %}</small>
+  </footer>
+
+  <!-- 🔧 Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

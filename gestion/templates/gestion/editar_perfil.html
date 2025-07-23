@@ -1,0 +1,29 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Editar perfil{% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-header bg-warning text-white">
+    <h5 class="mb-0">✏️ Editar perfil</h5>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label>Nombre</label>
+        <input type="text" name="first_name" value="{{ usuario.first_name }}" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Apellido</label>
+        <input type="text" name="last_name" value="{{ usuario.last_name }}" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Correo electrónico</label>
+        <input type="email" name="email" value="{{ usuario.email }}" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-warning w-100">💾 Guardar cambios</button>
+    </form>
+    <a href="{% url 'perfil' %}" class="btn btn-outline-secondary mt-3 w-100">↩️ Volver a Mi Perfil</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Registro de usuario{% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width: 600px;">
+  <div class="card-header bg-success text-white">
+    <h4 class="mb-0">📋 Crear cuenta</h4>
+  </div>
+  <div class="card-body">
+
+    {% if form.errors %}
+      <div class="alert alert-danger">
+        <strong>Ups... algo no salió bien 😅</strong>
+        <ul class="mb-0">
+          {% for field in form %}
+            {% for error in field.errors %}
+              <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label">{{ field.label }}</label>
+          {{ field }}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="btn btn-success w-100">✅ Registrarme</button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
