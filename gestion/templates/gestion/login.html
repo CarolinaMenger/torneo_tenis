@@ -4,10 +4,15 @@
 
 {% block content %}
 <div class="card mx-auto" style="max-width: 600px;">
-  <div class="card-header bg-secondary text-white">
+  <div class="card-header bg-primary text-white">
     <h4 class="mb-0">🔐 Iniciar sesión</h4>
   </div>
   <div class="card-body">
+    {% if request.GET.next %}
+  <div class="alert alert-warning text-center mb-4">
+    ⚠️ Debe estar registrado o iniciar sesión para acceder a este servicio.
+  </div>
+{% endif %}
     <form method="post">
       {% csrf_token %}
 

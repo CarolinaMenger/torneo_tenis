@@ -69,7 +69,15 @@ class PartidoForm(forms.ModelForm):
             raise forms.ValidationError("Ingresá el resultado como sets con guión, ej. 6-4, 3-6, 7-5 🎯")
 
 class BusquedaJugadorForm(forms.Form):
-    nombre = forms.CharField(label='Nombre', max_length=100, required=False)
+    nombre_completo = forms.CharField(
+        label='Nombre del jugador',
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Ej: Juan Pérez',
+            'class': 'form-control'
+        })
+    )
 
 class RegistroForm(UserCreationForm):
     first_name = forms.CharField(label='Nombre', max_length=30, required=True)

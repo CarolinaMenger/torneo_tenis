@@ -1,8 +1,10 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Jugador, Torneo, Partido, Perfil
 from .forms import JugadorForm, TorneoForm, PartidoForm, BusquedaJugadorForm, RegistroForm, FotoPerfilForm
@@ -12,7 +14,14 @@ def inicio(request):
     return render(request, 'gestion/inicio.html')
 
 # 🧍 Crear jugador
-class JugadorCreate(CreateView):
+class JugadorCreate(LoginRequiredMixin, CreateView):
+    model = Jugador
+    form_class = JugadorForm
+    template_name = 'gestion/jugador_form.html'
+    success_url = '/jugadores/'
+
+# ✏️ Modificar jugador
+class JugadorUpdate(LoginRequiredMixin, UpdateView):
     model = Jugador
     form_class = JugadorForm
     template_name = 'gestion/jugador_form.html'
@@ -28,13 +37,32 @@ class JugadorList(ListView):
 def buscar_jugadores(request):
     form = BusquedaJugadorForm(request.GET)
     resultados = []
+    consulta = ""  
+
     if form.is_valid():
-        nombre = form.cleaned_data['nombre']
-        resultados = Jugador.objects.filter(nombre__icontains=nombre)
-    return render(request, 'gestion/buscar_jugador.html', {'form': form, 'resultados': resultados})
+        consulta = form.cleaned_data['nombre_completo'].strip()
+        partes = consulta.split()
+
+        if len(partes) == 2:
+            nombre, apellido = partes
+            resultados = Jugador.objects.filter(
+                Q(nombre__icontains=nombre),
+                Q(apellido__icontains=apellido)
+            )
+        elif len(partes) == 1:
+            resultados = Jugador.objects.filter(
+                Q(nombre__icontains=partes[0]) | Q(apellido__icontains=partes[0])
+            )
+
+    return render(request, 'gestion/buscar_jugador.html', {
+        'form': form,
+        'resultados': resultados,
+        'consulta': consulta
+    })
+
 
 # 🎾 Crear torneo
-class TorneoCreate(CreateView):
+class TorneoCreate(LoginRequiredMixin, CreateView):
     model = Torneo
     form_class = TorneoForm
     template_name = 'gestion/torneo_form.html'
@@ -47,7 +75,7 @@ class TorneoList(ListView):
     context_object_name = 'torneos'
 
 # 🆚 Crear partido
-class PartidoCreate(CreateView):
+class PartidoCreate(LoginRequiredMixin, CreateView):
     model = Partido
     form_class = PartidoForm
     template_name = 'gestion/partido_form.html'
@@ -124,7 +152,7 @@ class CambioPasswordView(PasswordChangeView):
 # 📸 Cambiar Foto de Perfil    
 @login_required
 def subir_foto_view(request):
-    perfil = Perfil.objects.get(usuario=request.user)
+    perfil, _ = Perfil.objects.get_or_create(usuario=request.user)
     if request.method == 'POST':
         form = FotoPerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():

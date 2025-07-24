@@ -50,25 +50,23 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'jugador_lista' %}">📋 Ver jugadores</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'jugador_nuevo' %}">➕ Cargar jugador</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'buscar_jugador' %}">🔍 Buscar jugador</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'torneo_nuevo' %}">➕ Cargar torneo</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'partido_nuevo' %}">➕ Cargar partido</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'torneo_lista' %}">📋 Ver torneos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'torneo_nuevo' %}">➕ Cargar torneo</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'partido_lista' %}">📋 Ver partidos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'partido_nuevo' %}">➕ Registrar partido</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ℹ️ Acerca de mí</a></li>
         </ul>
 
         <!-- 👤 Navegación por sesión -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           {% if user.is_authenticated %}
-            <!-- 👋 Saludo -->
-            <li class="nav-item">
-              <span class="nav-link">👋 Hola, {{ user.first_name|default:user.username }}</span>
-            </li>
 
-            <!-- 👤 Mi Perfil -->
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'perfil' %}">👤 Mi Perfil</a>
-            </li>
+        <!-- 👋 Saludo que lleva al perfil -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'perfil' %}">
+          👋 Hola, {{ user.first_name|default:user.username }}
+          </a>
+        </li>
 
             <!-- 🔓 Cerrar sesión (via POST) -->
             <li class="nav-item">
@@ -80,6 +78,7 @@
               </form>
             </li>
           {% else %}
+
             <!-- 🔐 Ingreso -->
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">🔐 Ingresar</a>

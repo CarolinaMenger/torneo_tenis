@@ -24,27 +24,19 @@
 </div>
 
 <!-- Resultados -->
+<h5 class="mb-3">Resultados para: "{{ consulta }}"</h5>
+
 {% if resultados %}
-    <h4 class="mb-3">Resultados encontrados:</h4>
-    <table class="table table-bordered table-hover">
-        <thead class="table-light">
-            <tr>
-                <th>Nombre</th>
-                <th>Ranking</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for jugador in resultados %}
-            <tr>
-                <td>{{ jugador.nombre }}</td>
-                <td>{{ jugador.ranking }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% elif form.is_bound %}
-    <div class="alert alert-warning text-center">
-        No se encontraron jugadores con ese nombre.
-    </div>
+    <ul class="list-group">
+        {% for jugador in resultados %}
+            <li class="list-group-item">
+                <strong>{{ jugador.nombre }} {{ jugador.apellido }}</strong><br>
+                Ranking: {{ jugador.ranking }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-muted">No se encontraron coincidencias. Probá ingresar nombre y apellido juntos.</p>
 {% endif %}
+
 {% endblock %}

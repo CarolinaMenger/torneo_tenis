@@ -9,22 +9,30 @@
   <thead class="table-dark">
     <tr>
       <th>Nombre y Apellido</th>
+      <th>País</th>
       <th>Fecha de nacimiento</th>
       <th>Edad</th>
       <th>Ranking</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     {% for jugador in jugadores %}
     <tr>
       <td>{{ jugador.nombre }} {{ jugador.apellido }}</td>
+      <td>{{ jugador.pais }}</td>
       <td>{{ jugador.fecha_nacimiento|date:"d/m/Y" }}</td>
       <td>{{ jugador.edad }} años</td>
       <td>{{ jugador.ranking }}</td>
+      <td>
+      <a href="{% url 'modificar_jugador' jugador.id %}" class="btn btn-sm btn-warning">
+        ✏️ Modificar
+      </a>
+    </td>
     </tr>
     {% empty %}
     <tr>
-      <td colspan="4" class="text-center text-muted">No hay jugadores cargados aún.</td>
+      <td colspan="5" class="text-center text-muted">No hay jugadores cargados aún.</td>
     </tr>
     {% endfor %}
   </tbody>

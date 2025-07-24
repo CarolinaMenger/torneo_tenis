@@ -10,7 +10,9 @@
         <tr>
             <th>Nombre</th>
             <th>Sede</th>
+            <th>País</th>
             <th>Fecha de inicio</th>
+            <th>Fecha de fin</th>
         </tr>
     </thead>
     <tbody>
@@ -18,11 +20,13 @@
         <tr>
             <td>{{ torneo.nombre }}</td>
             <td>{{ torneo.sede }}</td>
-            <td>{{ torneo.fecha_inicio }}</td>
+            <td>{{ torneo.pais }}</td>
+            <td>{{ torneo.fecha_inicio|date:"d/m/Y" }}</td>
+            <td>{{ torneo.fecha_fin|date:"d/m/Y" }}</td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="3" class="text-center text-muted">No hay torneos cargados.</td>
+            <td colspan="5" class="text-center text-muted">No hay torneos cargados.</td>
         </tr>
         {% endfor %}
     </tbody>

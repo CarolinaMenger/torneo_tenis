@@ -6,7 +6,7 @@ from .views import (
     TorneoCreate, TorneoList,
     PartidoCreate, PartidoList,
     about_view, registrar_usuario, bienvenida_view, perfil_view,
-    editar_perfil_view, subir_foto_view,
+    editar_perfil_view, subir_foto_view, JugadorUpdate,
 )
 
 urlpatterns = [
@@ -29,4 +29,5 @@ urlpatterns = [
     path('perfil/cambiar-password/', auth_views.PasswordChangeView.as_view(template_name='gestion/cambiar_password.html',
     success_url='/perfil/',), name='cambiar_password'),
     path('perfil/foto/', subir_foto_view, name='subir_foto'),
+    path('jugadores/modificar/<int:pk>/', JugadorUpdate.as_view(), name='modificar_jugador'),
 ]
