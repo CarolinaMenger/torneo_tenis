@@ -8,6 +8,30 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    /* 👉 Texto de bienvenida */
+.texto-bienvenida {
+  color: #000000;
+  font-weight: 500;
+  font-size: 1.75rem;
+}
+
+/* 🏠 Botón estilo negro + hover naranja */
+.btn-caro {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-caro:hover {
+  background-color: #e86c33; /* Naranja tipo barra */
+  color: white;
+  border-color: #e86c33;
+}
+
     .navbar-nav .nav-item {
       margin-right: 10px;
     }
@@ -23,29 +47,51 @@
         margin-bottom: 8px;
       }
     }
+
+    .bg-naranja {
+  background-color: #e86c33; /* Naranja tipo barra */
+}
+.avatar-perfil {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  transition: transform 0.3s ease;
+}
+
+.avatar-perfil:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(232, 108, 51, 0.6); /* Naranja suave al pasar */
+}
+
   </style>
 </head>
 <body>
   <body>
   {% if user.is_authenticated and user.perfil.foto %}
-    <div class="position-absolute top-0 end-0 p-3">
-      <a href="{% url 'perfil' %}">
-        <img src="{{ user.perfil.foto.url }}" class="rounded-circle shadow" width="38" height="38" alt="Avatar">
-      </a>
-    </div>
-  {% endif %}
+  <div class="position-absolute" style="top: 56px; right: 24px;">
+    <a href="{% url 'perfil' %}">
+      <img src="{{ user.perfil.foto.url }}" class="avatar-perfil" alt="Foto de perfil">
+    </a>
+  </div>
+{% endif %}
+
+  </nav>
+
+  <!-- 🎾 Línea divisoria estilo polvo de ladrillo -->
+  <div style="height: 4px; background-color: #e86c33;"></div>
 
   <!-- 🏷️ Título principal -->
   <div class="bg-light text-center py-3 border-bottom">
-    <h1 class="display-5 text-primary mb-0">🎾 Torneos de Tenis</h1>
+    <h1 class="display-5 titulo-principal mb-0">🎾 Torneos de Tenis</h1>
     <p class="text-muted fs-6">Gestión y resultados en un solo lugar</p>
   </div>
 
   <!-- 🟦 Barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse">
-        <!-- 📂 Navegación principal -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e86c33;">
+            <!-- 📂 Navegación principal -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="{% url 'jugador_lista' %}">📋 Ver jugadores</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'jugador_nuevo' %}">➕ Cargar jugador</a></li>
@@ -93,6 +139,8 @@
       </div>
     </div>
   </nav>
+
+    </nav>
 
   <!-- ✅ Mensajes Django -->
   <div class="container mt-3">

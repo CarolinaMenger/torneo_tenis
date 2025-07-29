@@ -4,11 +4,11 @@
 
 {% block content %}
 <div class="card mx-auto" style="max-width: 650px;">
-  <div class="card-header bg-primary text-white">
+  <div class="card-header bg-naranja text-white">
     <h4 class="mb-0">🎾 Registrar partido</h4>
+    <div style="height: 4px; background-color: #e86c33; margin-top: 4px;"></div>
   </div>
   <div class="card-body">
-
     <form method="post">
       {% csrf_token %}
 
@@ -69,7 +69,7 @@
         <small class="form-text text-muted">Ejemplo: 6-4, 3-6, 7-5</small>
       </div>
 
-      <button type="submit" class="btn btn-primary">Guardar partido</button>
+      <button type="submit" class="btn btn-caro">Guardar partido</button>
     </form>
   </div>
 </div>

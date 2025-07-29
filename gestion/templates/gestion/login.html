@@ -4,9 +4,10 @@
 
 {% block content %}
 <div class="card mx-auto" style="max-width: 600px;">
-  <div class="card-header bg-primary text-white">
-    <h4 class="mb-0">🔐 Iniciar sesión</h4>
-  </div>
+  <div class="card-header bg-naranja text-white text-center">
+  <h4 class="mb-0">🔐 Iniciar sesión</h4>
+  <div style="height: 4px; background-color: #e86c33; margin-top: 4px;"></div>
+</div>
   <div class="card-body">
     {% if request.GET.next %}
   <div class="alert alert-warning text-center mb-4">
@@ -34,7 +35,7 @@
         </div>
       {% endfor %}
 
-      <button type="submit" class="btn btn-primary">Ingresar</button>
+      <button type="submit" class="btn btn-caro">Ingresar</button>
     </form>
   </div>
 </div>

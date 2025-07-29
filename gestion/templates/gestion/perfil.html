@@ -3,8 +3,9 @@
 
 {% block content %}
 <div class="card mx-auto" style="max-width: 500px;">
-  <div class="card-header bg-info text-white text-center">
+  <div class="card-header bg-naranja text-white text-center">
     <h5 class="mb-0">👤 Mi perfil</h5>
+    <div style="height: 4px; background-color: #e86c33; margin-top: 4px;"></div>
   </div>
   <div class="card-body text-center">
     {% if usuario.perfil.foto %}
@@ -19,7 +20,7 @@
     <a href="{% url 'subir_foto' %}" class="btn btn-secondary w-100 mt-3">📸 Cambiar foto</a>
     <a href="{% url 'editar_perfil' %}" class="btn btn-warning w-100 mt-2">✏️ Editar perfil</a>
     <a href="{% url 'cambiar_password' %}" class="btn btn-danger w-100 mt-2">🔐 Cambiar contraseña</a>
-    <a href="{% url 'inicio' %}" class="btn btn-outline-primary w-100 mt-2">🏠 Volver al inicio</a>
+    <a href="{% url 'inicio' %}" class="btn btn-caro w-100 mt-2">🏠 Volver al inicio</a>
   </div>
 </div>
 {% endblock %}
